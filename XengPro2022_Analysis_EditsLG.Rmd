@@ -1,0 +1,360 @@
+---
+title: "XengK2022Analysis"
+author: "Carly Muletz Wolz"
+date: "2/15/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r load data, message=F, warning = F}
+##    Grayfer Lab Xenopus Mast cell enrichment + Bd Study 2022  Data Analysis   ###
+
+#if (!require("BiocManager", quietly = TRUE))
+#    install.packages("BiocManager")
+#
+#BiocManager::install("phyloseq")
+
+## Load packages
+library(phyloseq)
+library(ape)
+library(vegan)
+library(ggplot2)
+library(pairwiseAdonis)
+library(BiocManager)
+library(DECIPHER)
+library("ranacapa")
+
+##Set working directory to bring in files##
+setwd("/Users/lkgentry/OneDrive - Smithsonian Institution/GrayferLabExperiments/XenoProbioticAnalysisNov2022/CombinedRunFiles/")
+
+setwd("/Users/Carly/OneDrive - Smithsonian Institution/NSF-BBSRC2022/GrayferLabExperiments/XenoProbioticAnalysisNov2022/CombinedRunFiles/")
+
+featureTab <- otu_table(read.csv("XENGPRO2022_feature_table_comborunFINAL.csv", header = T, row.names = 1), taxa_are_rows = TRUE)
+
+## 1190 taxa by 240 samples
+dim(featureTab)
+
+# Read taxonomy info in, make matrix and compatible for phyloseq
+taxonomy <- tax_table(as.matrix(read.csv("XENGPRO2022_taxonomy_comborun.csv", row.names = 1)))
+
+
+meta_data <- sample_data(read.csv("XENGPro2022_meta_FINAL-anti.csv", header = T, row.names = 1))
+
+## SampleID is now row.names, still useful to have SampleID in metadata so add in
+
+meta_data$SampleID <- row.names(meta_data)
+
+# Read in sequence data, may need if you want to look at or subset the DNA sequences at some point
+library(Biostrings)
+seqs <- readDNAStringSet("XENGPRO2022_DNAsequences_combo.fasta")
+
+# Merge it all together
+
+xk8 <- merge_phyloseq(featureTab, taxonomy, meta_data, seqs) #tree)
+
+xk8
+
+
+dfxk8 <- as(sample_data(xk8), "data.frame")
+
+str(dfxk8) 
+
+## Come back to make factors in phyloseq object
+dfxk8$Treatment <- as.factor(dfxk8$Treatment)
+
+dfxk8$DayWeekNo <- as.factor(dfxk8$DayWeekNo)
+
+dfxk8$TrmtTPt <- as.factor(dfxk8$TrmtTP)
+
+
+#Make sure you ran this with -anti file. If not, rerun once you create -anti file
+
+```
+
+
+### Final coverage, sample size and sequence counts
+```{r, message=F, warning = F, eval = F}
+## OK, true final coverage difference = 13.996x. Rarified in preprocess. Make sure to use rarified columns for analyses of 
+sort(sample_sums(xk8))
+
+max(sample_sums(xk8))/min(sample_sums(xk8))
+
+
+## FINAL sequence counts =  3,481,739 sequences
+
+### BUT, this is not they rarefied. Need to decide to rarefy or not.
+
+sum(sample_sums(xk8))
+
+library(plyr)
+
+## Info on sample sizes 
+info <- ddply(dfxk8 , .(TrmtTP), summarize, sample_size=length(TrmtTP))
+info
+
+
+```
+
+
+
+### Make heatmap
+
+```{r}
+
+tax_table(xk8) <- cbind(tax_table(xk8), ASV=taxa_names(xk8))
+
+XenoP_RA <- transform_sample_counts(xk8, function(x) x / sum(x))
+
+head(tax_table(XenoP_RA))
+str(dfxk8$Treatment)
+
+
+Select_sigASVs <-  subset_taxa(XenoP_RA, ASV %in% c("ASV18", "ASV10", "ASV9"))
+
+
+ph <- plot_heatmap(Select_sigASVs, distance = "euclidean", sample.label="Treatment", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "Treatment")
+
+
+ph + facet_grid(~Treatment, scales = "free_x")
+
+ph + facet_grid(~DayWeekNo, scales = "free_x")
+
+ph + facet_grid(Treatment~DayWeekNo, scales = "free")
+
+
+## No doesn't look good either
+ph2 <- plot_heatmap(Select_sigASVs, distance = "euclidean", sample.label="TrmtTP", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "TrmtTP")
+
+
+ph2 + facet_grid(~TrmtTP, scales = "free_x")
+
+ph2 + facet_grid(~DayWeekNo, scales = "free_x")
+
+## Ok try to subset each treatment and merge in ppt
+
+Select_sigASVsC <- subset_samples(Select_sigASVs, Treatment ==("C"))
+
+phC <- plot_heatmap(Select_sigASVsC, distance = "euclidean", sample.label="DayWeekNo", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "DayWeekNo")
+
+
+phC + facet_grid(~DayWeekNo, scales = "free_x")
+
+
+Select_sigASVsP1 <- subset_samples(Select_sigASVs, Treatment ==("P1"))
+
+phP1 <- plot_heatmap(Select_sigASVsP1, distance = "euclidean", sample.label="DayWeekNo", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "DayWeekNo")
+
+
+phP1 + facet_grid(~DayWeekNo, scales = "free_x")
+
+
+Select_sigASVsP2 <- subset_samples(Select_sigASVs, Treatment ==("P2"))
+
+phP2 <- plot_heatmap(Select_sigASVsP2, distance = "euclidean", sample.label="DayWeekNo", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "DayWeekNo")
+
+
+phP2 + facet_grid(~DayWeekNo, scales = "free_x")
+
+Select_sigASVsP3 <- subset_samples(Select_sigASVs, Treatment ==("P3"))
+
+phP3 <- plot_heatmap(Select_sigASVsP3, distance = "euclidean", sample.label="DayWeekNo", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "DayWeekNo")
+
+
+phP3 + facet_grid(~DayWeekNo, scales = "free_x")
+
+Select_sigASVsP4 <- subset_samples(Select_sigASVs, Treatment ==("P4"))
+
+phP4 <- plot_heatmap(Select_sigASVsP4, distance = "euclidean", sample.label="DayWeekNo", 
+                   taxa.label = "ASV", high = "red", low = "yellow", 
+                   na.value = "darkgray", sample.order = "DayWeekNo")
+
+
+phP4 + facet_grid(~DayWeekNo, scales = "free_x")
+
+
+
+```
+
+
+
+
+
+
+
+## Week 1 alpha diversity
+
+```{r}
+### W1 in new experiment (didn't update to call W1, is called 12 from 1st experiment)
+
+
+## STILL NEED TO look at change over time
+
+xk12 <- subset_samples(xk8, DayWeekNo == "W1")
+df12 <- as(sample_data(xk12), "data.frame")
+
+df12$Treatment <- as.factor(df12$Treatment)
+df12$DayWeekNo <- as.factor(df12$DayWeekNo)
+
+df12$TrmtTP <- as.factor(df12$TrmtTP)
+
+xk12 <- filter_taxa(xk12, function(x) sum(x) !=0, TRUE) #11,344 taxa
+
+
+str(df12)
+
+
+## Not normally distributed, need to come back and think of other transformations. sqrt oftens works well
+hist(log10(df12$S.obs))
+hist((df12$S.obs_anti+1))
+hist(log10(df12$AntiBdRA+1))
+
+## p value is below 0.05, so data is normally distributed, might need to do rank test
+shapiro.test(log10(df12$S.obs)) 
+shapiro.test((df12$S.obs))
+shapiro.test(sqrt(df12$S.obs))
+shapiro.test((df12$S.obs)^(1/3))
+
+shapiro.test(log10(df12$S.obs_anti+1)) #p=0.03 # close enough probably
+
+## Might need to be rank test
+shapiro.test((df12$AntiBdRA+1)^(1/3)) 
+shapiro.test(log10(df12$AntiBdRA+1)) 
+shapiro.test(sqrt(df12$AntiBdRA+1)) 
+
+library(car)
+## testing for homogeneity of variance
+## p value is above 0.05, so data similar variances, but need to resolve distribution issue above first
+leveneTest(log10(df12$S.obs)~df12$TrmtTP)
+leveneTest(log10(df12$S.obs_anti+1)~df12$TrmtTP)
+leveneTest(log10(df12$AntiBdRA+1)~df12$TrmtTP)
+
+str(df12$TrmtTimePoint)
+
+## OVerall species richnes
+
+
+kruskal.test(S.obs ~ TrmtTP, data = df12)
+
+
+levels(df12$TrmtTP)
+
+## doesn't look like it will matter the test re
+
+ggplot(data = df12, aes(x=TrmtTP, y=S.obs))+geom_boxplot()+theme_bw()+theme_classic()+
+  theme(text = element_text(size = 20)) + ylab("Bacterial ASV richness") + xlab("")+ theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+
+
+### Anti-Bd species richness
+modeAlpha12ab <- aov(log10(S.obs_anti+1)~TrmtTP, data=df12)
+
+summary(modeAlpha12ab)
+
+ggplot(data = df12, aes(x=TrmtTP, y=S.obs_anti))+geom_boxplot()+theme_bw()+theme_classic()+
+  theme(text = element_text(size = 20)) + ylab("Bd-inhibitory bacterial richness") + xlab("")+ theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+## Relative abundance anti-Bd
+
+
+kruskal.test(AntiBdRA ~ TrmtTP, data = df12)
+
+
+
+ggplot(data = df12, aes(x=TrmtTP, y=AntiBdRA))+geom_boxplot()+theme_bw()+theme_classic()+
+  theme(text = element_text(size = 20)) + ylab("Bd-inhibitory bacterial relative abundance") + xlab("")+ theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+
+
+```
+
+### week 1 beta
+
+
+```{r, beta}
+
+## interested to quickly look at over time. Wow. Really shifts over time!
+
+jacc_PF <- phyloseq::distance(xk8, "jaccard", binary = T)
+jacc.ordPF <- ordinate(xk8, method = "PCoA", jacc_PF)
+
+p_jaccF <- plot_ordination(xk8, jacc.ordPF, color = "TrmtTP", shape = "DayWeekNo")
+p_jaccF + geom_point(size = 4)  +theme_bw() +theme_classic()+ 
+  theme(text = element_text(size = 20))
+
+## now, just wk1
+jacc_xk <- phyloseq::distance(xk12, "jaccard", binary = T)
+jacc.ord <- ordinate(xk12, method = "PCoA", jacc_xk)
+
+p_jacc <- plot_ordination(xk12, jacc.ord, color = "TrmtTP", shape = "TrmtTP")
+p_jacc + geom_point(size = 4)  +theme_bw() +theme_classic()+ 
+  theme(text = element_text(size = 20))
+
+
+
+### STATS
+library(vegan)
+jacc_adonis1 <- adonis2(jacc_xk ~ TrmtTP, data = df12)
+
+jacc_adonis1
+
+
+library(pairwiseAdonis)
+
+## Do not see how they all differ...need to ponder more, also need to consider if should use a rarefied dataset
+pairwise.adonis(jacc_xk, df12$TrmtTP)
+
+
+
+
+## BRAY
+
+bray_xk <- phyloseq::distance(xk12, "bray")
+bray.ord <- ordinate(xk12, method = "PCoA", bray_xk)
+
+## Look at our three levels we made earlier, species type
+p_bray <- plot_ordination(xk12, bray.ord, color = "TrmtTP", shape = "TrmtTP")
+
+p_bray + geom_point(size = 4)  +theme_bw() +theme_classic()+ 
+  theme(text = element_text(size = 20))
+
+
+### STATS
+bray_adonis1 <- adonis2(bray_xk ~ TrmtTP, data = df12)
+
+bray_adonis1
+
+
+
+
+## Need to think about this, a lot of pairwise differences
+pairwise.adonis(bray_xk, df12$TrmtTP)
+
+
+
+
+
+```
+
