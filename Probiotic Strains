@@ -1,0 +1,22 @@
+THA 2.2
+closest relative type strain is Stenotrophomonas rhizophila DSM 14405
+but with a d0/d4/d6 values (=digital DDH value) ranging from 67.5 -
+79.6 it is just
+bouncing around 70% which is considered the threshold for a new species.
+There is a little chance given that it is a new species, but most
+likely it is a S. rhizophila
+
+RSB 5.4
+Here the d4-dDDH value is about 40% which also tells us that it is
+definitively a NEW and not yet described Pseudomonas species !!
+
+
+RSB 5.11
+by 16S and whole genome sequence gives a super definitive statement: this is a
+for sure a Pseudomonas tolaasii
+
+In Combined run data
+
+ASV18 matches RSB5.4 (P1)
+ASV9 matches THA2.2 (P2)
+ASV10 matches RSB5.11 (P3)
