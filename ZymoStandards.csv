@@ -1,0 +1,16 @@
+"","PPC100622","PPC101722","PPC91522","PXC101322","PXC10322","PXC91322","PXC92222","PXC92722","Kingdom","Phylum","Class","Order","Family","Genus","Species"
+"ASV1","0","0","12","0","0","0","0","0","Bacteria","Firmicutes","Clostridia","Peptostreptococcales-Tissierellales","Peptostreptococcaceae","Romboutsia",NA
+"ASV2","0","0","0","0","0","2","0","0","Bacteria","Verrucomicrobiota","Verrucomicrobiae","Verrucomicrobiales","Rubritaleaceae",NA,NA
+"ASV5","0","0","4","0","0","0","0","0","Bacteria","Firmicutes","Clostridia","Clostridiales","Clostridiaceae","Clostridium sensu stricto 1",NA
+"ASV13","0","0","5","0","0","0","0","0","Bacteria","Bacteroidota","Bacteroidia","Flavobacteriales","Crocinitomicaceae","Fluviicola",NA
+"ASV15","4446","6557","5969","4806","4422","2043","1442","6229","Bacteria","Firmicutes","Bacilli","Bacillales","Bacillaceae","Bacillus",NA
+"ASV23","2418","3815","3803","4217","3831","769","295","5441","Bacteria","Proteobacteria","Gammaproteobacteria","Enterobacterales","Enterobacteriaceae","Escherichia-Shigella",NA
+"ASV28","2063","3434","4526","3017","2660","266","284","3807","Bacteria","Proteobacteria","Gammaproteobacteria","Enterobacterales","Enterobacteriaceae","Salmonella",NA
+"ASV35","2427","3877","422","2999","2488","409","434","3710","Bacteria","Firmicutes","Bacilli","Lactobacillales","Lactobacillaceae","Limosilactobacillus",NA
+"ASV40","2542","3787","1688","1615","1293","301","193","2432","Bacteria","Firmicutes","Bacilli","Lactobacillales","Listeriaceae","Listeria",NA
+"ASV41","2724","3371","436","2202","1932","384","346","3195","Bacteria","Firmicutes","Bacilli","Staphylococcales","Staphylococcaceae","Staphylococcus",NA
+"ASV47","1286","2119","2489","1562","1311","395","287","1863","Bacteria","Proteobacteria","Gammaproteobacteria","Pseudomonadales","Pseudomonadaceae","Pseudomonas",NA
+"ASV52","1817","2347","846","1691","1328","296","319","2377","Bacteria","Firmicutes","Bacilli","Lactobacillales","Enterococcaceae","Enterococcus",NA
+"ASV115","258","501","816","441","469","0","0","609","Bacteria","Proteobacteria","Gammaproteobacteria","Enterobacterales","Enterobacteriaceae","Salmonella","enterica"
+"ASV157","172","433","387","226","319","184","35","306","Bacteria","Proteobacteria","Gammaproteobacteria","Enterobacterales","Enterobacteriaceae","Escherichia-Shigella",NA
+"ASV180","133","358","339","137","245","41","16","198","Bacteria","Proteobacteria","Gammaproteobacteria","Enterobacterales","Enterobacteriaceae",NA,NA

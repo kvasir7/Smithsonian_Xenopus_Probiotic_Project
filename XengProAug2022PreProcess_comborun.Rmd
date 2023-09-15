@@ -1,0 +1,521 @@
+---
+title: "XengKPreProcess.Rmd"
+author: "Carly Muletz Wolz"
+date: "2/15/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+### Read in data and remove singletons
+```{r}
+
+##    Grayfer Lab Xenopus Probiotic Stuudy 2022 PRE-process Data Analysis   ###
+
+
+## Load packages
+library(phyloseq)
+library(ape)
+library(vegan)
+library(ggplot2)
+
+##Set working directory to bring in files##
+
+setwd("/Users/lkgentry/OneDrive - Smithsonian Institution/GrayferLabExperiments/XenoProbioticAnalysisNov2022/CombinedRunFiles/")
+
+
+
+# this is site by species matrix, need row.names = 1 to have phyloseq read it
+
+
+featureTab <- read.csv("XENGPRO2022_feature_table_comborun.csv", header = T, row.names = 1)
+
+# make compatible for phyloseq format
+featureTab = otu_table(featureTab, taxa_are_rows = TRUE)
+## 2676 taxa by 265 samples
+dim(featureTab)
+
+# Read taxonomy info in, make matrix and compatible for phyloseq
+taxonomy <- tax_table(as.matrix(read.csv("XENGPRO2022_taxonomy_comborun.csv", row.names = 1)))
+
+
+meta_data <- sample_data(read.csv("MetaProbExpAug2022.csv", header = T, row.names = 1))
+
+## SampleID is now row.names, still useful to have SampleID in metadata so add in
+
+meta_data$SampleID <- row.names(meta_data)
+
+
+#Read in sequence data, may need if you want to look at or subset the DNA sequences at some point
+library(Biostrings)
+seqs <- readDNAStringSet("XENGPRO2022_DNAsequences_combo.fasta")
+
+# You can also add a phylogenetic tree here, if you have one
+# library(ape)
+# tree = read.tree("FinalRFiles/exported-tree/SalAMPtree.nwk")
+
+# Merge it all together
+
+xk <- merge_phyloseq(featureTab, taxonomy, meta_data, seqs) #tree)
+
+xk
+
+
+
+## Check all samples are coming in
+
+## 2676 taxa by 265 samples
+dim(featureTab)
+sample_names(featureTab)
+
+sample_names(xk)
+
+sum(sample_sums(xk))
+#3870454
+
+sort(sample_sums(xk))
+
+## Filter singletons (only occur on 1 individual), seems to be a lot of ASVs with little information
+## This says needs to occur at least 1 time on at least 2 individual
+
+xk2 <- filter_taxa(xk, function (x) {sum(x > 0) >1}, prune=TRUE)
+
+## Note 2676 taxa and now 1324. I always remove singletons to individuals (note some people call singletons just 1 sequence) as I believe many are spurious. We can check the standards to verify this also.
+xk
+xk2
+
+## Lost a good bit of taxa, but not many sequences
+
+sum(sample_sums(xk))
+sum(sample_sums(xk2))
+
+#now 3848219 for xk2 sum
+
+sort(sample_sums(xk2))
+
+
+## REMOVE chloroplast and eukaryotic sequences
+
+
+get_taxa_unique(xk2, "Kingdom")
+
+## The NA may be host 16S rRNA, could blast if of interest
+Euk <- subset_taxa(xk2, Kingdom %in% c("Eukaryota", NA))
+
+tax_table(Euk)
+
+xk3 = subset_taxa(xk2, Kingdom %in% c("Bacteria", "Archaea"))
+
+xk3 <- subset_taxa(xk3, Class != "Chloroplast")
+
+xk3
+
+```
+
+
+### Let's look at the positive standards first, then remove for contaminant filtering
+
+### We recover all the bacterial taxa that should be there and in relatively similar relative abundances to what is expected, but there are extra that shouldn't be there
+
+#### See ZymoStandards-Taxonomy-Compare for more info
+```{r}
+MicroStClean <- subset_samples(xk3, Sample.type %in% c("PXC", "PPC"))
+
+## Are there ASVs that are lingering?
+sum(taxa_sums(MicroStClean) == 0)
+
+## getting rid of ASvs that are not in samples of interest
+MicroStClean = filter_taxa(MicroStClean, function(x) sum(x) !=0, TRUE)
+
+MicroStClean <- transform_sample_counts(MicroStClean, function(x) x/sum(x))
+
+otu_table(MicroStClean)
+dfo <- as.data.frame(otu_table(MicroStClean))
+
+## column 6 is genus, or change to the column of genus
+tax_table(MicroStClean)[,6]
+
+dft <- as.data.frame(tax_table(MicroStClean)[,6])
+
+dfpc <- cbind(dfo, dft)
+
+dfpc[order(dfpc$Genus), ]
+
+
+#Check positive controls have correct bacteria present. Can look in feature table two and taxanomy files. Will also tell you below. Take into account there can be different names for same bacteria species due to re-classification
+### Genus	Truth, same for both extraction and PCR controls
+#Bacillus	0.3
+#Enterococcus	0.07
+#Escherichia/Shigella	0.15
+#Lactobacillus	0.13
+#Listeria	0.12
+#Pseudomonas	0.07
+#Salmonella	0.10
+#Staphylococcus	0.1
+
+#Clostridium contam? in PPC91522
+#Fluviicola contam in PPC91522
+#Romboutsia contam in PPC91522
+
+
+#Controls look good, PPC91522 has contams
+## Let's see if decontam removes them
+
+## can write a file too and make plot
+
+site_species <-as(otu_table(MicroStClean), "matrix")
+taxonomy <- as(tax_table(MicroStClean), "matrix")
+write.csv(cbind(site_species, taxonomy), "ZymoStandards.csv")
+
+
+st <- psmelt(MicroStClean) # create dataframe from phyloseq object
+
+st <- subset(st, Abundance > 0)
+library(ggplot2)
+plot.rel.ab2 <- ggplot(data=st, aes(x=Sample, y=Abundance, fill=Genus))
+plot.rel.ab2 + geom_bar(aes(), stat="identity", position="stack")  +
+  ylab("Relative abundance (% of total sequences)") +theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + theme_bw()  +
+  theme_classic()+ labs(x = "")+ theme(text = element_text(size = 20))  
+
+
+
+
+
+### Let's come back and look at these after filtering contaminants. Copied below when you need to look at it again
+
+## Go back to before we removed singletons, interested if singletons are showing up in standards...
+
+MicroStPrePre <- subset_samples(xk, Sample.type %in% c("PXC", "PPC"))
+
+MicroStPrePre <- filter_taxa(MicroStPrePre, function(x) sum(x) !=0, TRUE)
+
+otu_table(MicroStPrePre)
+
+tax_table(MicroStPrePre)
+
+### Hmmmm...wow, good to check. Important to remove singletons!
+
+```
+
+
+
+
+
+
+### Contaminant filter
+#### See more: https://benjjneb.github.io/decontam/vignettes/decontam_intro.html
+
+```{r}
+####----Decontam----####
+citation ("decontam")
+
+
+library(decontam)
+
+
+
+## Says in paper that combined method provides the best bimodal distribution 
+## suggesting that is will be the more robust classification when both data types
+## are present, which we have
+
+
+## NOTE: you need to put in your DNA quant readings that you used for pooling your library into the metadata file and call it quant_reading. Look a the tutorial indicated above
+## ALSO later you need a column that says Sample_or_Control
+
+## Keep positive controls in right now, will relook at and assess
+
+sample_data(xk3)$is.neg <- sample_data(xk3)$Sample.type == "Control"
+
+
+##it will filter out samples with zero total count frequencies, this will cause an error when you go to plot_frequency. Below, I fixed it by removing the zero counts before doing the isContaminant(). 
+#If you do not prune samples with 0 counts, will cause error when plotting
+
+non.zero <- sample_sums(xk3) > 0
+ps.nonzero <- prune_samples(non.zero, xk3)
+# Then go forward with ps.nonzero. Removed 4 samples with 0 counts
+
+## Using combined based on paper recommendation
+contamdf.combined <- isContaminant(ps.nonzero, method="combined", neg="is.neg", conc = "quant_reading")
+
+
+## If error, make sure all have quant readings. For too low qubit readings - I put 0.05. In this data set, all samples have higher quant readings
+sample_data(ps.nonzero)$quant_reading
+table(contamdf.combined$contaminant)
+
+#12 True, 1201 false
+
+hist(contamdf.combined$p)
+
+
+ps.pa <- transform_sample_counts(ps.nonzero, function(abund) 1*(abund>0))
+ps.pa.neg <- prune_samples(sample_data(ps.pa)$Sample.type == "Control", ps.pa)
+ps.pa.pos <- prune_samples(sample_data(ps.pa)$Sample.type == "swab", ps.pa)
+# Make data.frame of prevalence in positive and negative samples
+df.pa <- data.frame(pa.pos=taxa_sums(ps.pa.pos), pa.neg=taxa_sums(ps.pa.neg),
+                    contaminant=contamdf.combined$contaminant)
+ggplot(data=df.pa, aes(x=pa.neg, y=pa.pos, color=contaminant)) + geom_point() +
+  xlab("Prevalence (Control)") + ylab("Prevalence (swab)")
+
+## Looks like most in neg control are exclusive to neg control (= FALSE), then a couple in a lot of samples, but that's ok. Do check if you lose a lot of sequences after this if there is an issue with what decontam is removing.
+
+## row numbers of some of the contaminants (NOT ASV numbers)
+head(which(contamdf.combined$contaminant))
+
+## says 583, 602, 639, 666, 878, 944. So let's plot some that are contaminants and some that aren't
+
+#here you can put specific contams you want to look at
+plot_frequency(ps.nonzero, taxa_names(ps.nonzero)[c(878, 944)], conc="quant_reading") + 
+  xlab("DNA Concentration")
+
+#here you can put the number of contams you want to look at. I looked at all 12 here
+plot_frequency(ps.nonzero, taxa_names(ps.nonzero)[sample(which(contamdf.combined$contaminant),12)], conc="quant_reading") +xlab("DNA Concentration")
+
+## Please list number of contaminants and what they are. You can you just put ASV#.
+#ASV667, ASV689, ASV740, ASV772, ASV1047, ASV1148, ASV1260, ASV1331, ASV1460, 
+#ASV1536, ASV2193, ASV2405
+##These are all the contaminants ASVs, plotted all of them and they all look like clear contaminants
+#plots figure in folder
+
+
+####----Delete Contaminants----####
+#Need to delete ASVs found as contaminants by either method
+
+xk4 <- prune_taxa(!contamdf.combined$contaminant, ps.nonzero)
+
+sum(sample_sums(ps.nonzero)) #3716234
+sum(sample_sums(xk4)) #3715858
+sort(sample_sums(xk4))
+
+
+xk4 <- subset_samples(xk4, Sample.type != "Control")
+
+sort(sample_sums(xk4))
+
+## Let's look at positive control again, see if contaminant filtering helped
+
+
+MicroStClean2 <- subset_samples(xk4, Sample.type %in% c("PPC", "PXC"))
+
+## getting rid of ASvs that are not in samples of interest
+MicroStClean2 = filter_taxa(MicroStClean2, function(x) sum(x) !=0, TRUE)
+
+otu_table(MicroStClean2)
+
+otu_table(MicroStClean)
+
+tax_table(MicroStClean2)
+## Still same ones.### Genus	Truth, same for both extraction and PCR controls
+#see above for numbers and what is present in postive controls
+
+
+
+## can write a file too and make plot
+
+site_species <-as(otu_table(MicroStClean2), "matrix")
+taxonomy <- as(tax_table(MicroStClean2), "matrix")
+write.csv(cbind(site_species, taxonomy), "ZymoStandards.csv")
+
+
+write.csv(as(otu_table(xk4), "matrix"), "XENGPRO2022_feature_table_comborunEDIT.csv")
+
+## Positive controls looked really good. 
+## Can see this in XENGPRO2022_feature_table__comborunFINAL.csv
+## Manually deleting the positive controls and the positive controls ASVs
+#The positive control ASVs were in several of the D0 samples that were contaminated during extraction. So removing those and renaming to XENGPRO2022_feature_table_comborunFINAL.csv
+
+
+```
+
+######### ALPHA DIVERSITY + Bd-inhibitory Calculate and add to mapping file with seq counts  ############
+
+```{r Estimate richess}
+
+featureTab2 <- read.csv("XENGPRO2022_feature_table_comborunFINAL.csv", header = T, row.names = 1)
+
+# make compatible for phyloseq format
+featureTab2 = otu_table(featureTab2, taxa_are_rows = TRUE)
+## 1190 taxa by 240 samples
+dim(featureTab2)
+
+# Merge it all together
+
+xk6 <- merge_phyloseq(featureTab2, taxonomy, meta_data, seqs) #tree)
+
+xk6
+
+
+## Huge sequence count difference, need to rarefy
+sort(sample_sums(xk6))
+sum(sample_sums(xk6)) #3503724
+
+
+
+max(sample_sums(xk6)) #36039
+min(sample_sums(xk6)) #395
+max(sample_sums(xk6))/min(sample_sums(xk6))
+
+#Big sequencing difference. Look at rarefaction to see where to cut
+#91x is large difference.. You want this number to be less than 10x
+
+library("ranacapa")
+
+p <- ggrare(xk6, step = 100, color = "Treatment", se = FALSE)
+
+## NOTE: change the xlim based on your data or ability to see lower sequence numbers
+p + theme_bw() + theme_classic() + xlab("Sequence count") + ylab("Bacterial ASV richness") +
+  theme(text = element_text(size = 15)) + labs(color='Sample type') #+xlim(0,50000)
+
+p + theme_bw() + theme_classic() + xlab("Sequence count") + ylab("Bacterial ASV richness") +
+  theme(text = element_text(size = 15)) + labs(color='Sample type') +xlim(0,4000)
+
+## drop low coverage samples, decided to cut at 2500. Drops just a few W1 and w2 samples, DO is not that critical
+xk7 <- prune_samples(sample_sums(xk6)>2500, xk6)
+
+
+max(sample_sums(xk7))/min(sample_sums(xk7))
+
+#14x difference. Will need to rarefy 
+## Need to first calculate alpha on non-rarefied dataset just to have
+
+dfxk7 <- as(sample_data(xk7), "data.frame")
+
+t_otu7 <-t(as(otu_table(xk7), "matrix"))
+
+library(vegan)
+AD <- estimateR(t_otu7)
+AD <- t(as.data.frame(AD))
+
+#need to have both alpha and df having the same column info
+
+
+## Add sequence coverage info
+seqs <- as.data.frame(sample_sums(xk7))
+seqs$SampleID <- row.names(seqs)
+
+#now merge to get sequence counts and alpha estimates in mapping file
+alpha_df <- merge(dfxk7, AD,  by = "row.names")
+alpha_df$SampleID <- alpha_df$Row.names
+alpha_df <- merge(alpha_df, seqs, by = "SampleID")
+row.names(alpha_df) <- alpha_df$Row.names
+
+xk7Rare = rarefy_even_depth(xk7, replace=FALSE, rngseed = 711)
+
+##message:`set.seed(711)` was used to initialize repeatable random subsampling.
+#Please record this for your records so others can reproduce.
+#Try `set.seed(711); .Random.seed` for the full vector
+#...
+#65OTUs were removed because they are no longer 
+#present in any sample after random subsampling
+
+## If correct, should all be at same sample sum, 2575
+sort(sample_sums(xk7Rare))
+
+t_otuR <-t(as(otu_table(xk7Rare), "matrix"))
+
+## Add sequence coverage info
+seqsRare <- as.data.frame(sample_sums(xk7Rare))
+seqsRare$SampleID <- row.names(seqsRare)
+
+## ADD alpha estimates for rarefied dataset. WE are using this for analyses, but if you have even coverage <10x variation then you don't need to rarefy. I have rationale for this if interested
+AD2 <- estimateR(t_otuR)
+AD2 <- t(as.data.frame(AD2))
+AD2
+colnames(AD2)[colnames(AD2)=="S.obs"] <- "S.obs_rare"
+colnames(AD2)[colnames(AD2)=="S.chao1"] <- "S.chao1_rare"
+colnames(AD2)[colnames(AD2)=="S.ACE"] <- "S.ACE_rare"
+
+
+
+#now merge to get rarefied sequence counts and alpha estimates in mapping file
+alpha_df_rare <- merge(AD2, seqsRare, by = "row.names")
+alpha_df_rare$SampleID <- alpha_df_rare$Row.names
+
+
+
+#now merge to get SR and PD of rarefied in mapping file
+## you could get a warning about duplicate row.names, but that's fine. Didn't here
+alpha_df2 <- merge(alpha_df, alpha_df_rare, by = "SampleID")
+
+
+
+## ANTI-Bd bac calculations
+
+
+#Carly is getting me this 
+my_antiBd <- read.csv("blast-WoodhamsStrictXengPro2022comborun.csv", header = T, stringsAsFactors = F)
+
+
+str(my_antiBd$X..Pairwise.Identity)
+
+my_antiBd <- my_antiBd[my_antiBd$X..Pairwise.Identity > 0.999,]
+
+my_antiBd$X..Pairwise.Identity
+my_antiBd <- my_antiBd[,1]
+str(my_antiBd)
+
+
+## Need an ASV ID in the taxonomy table to match to
+tax_table(xk7Rare) <- cbind(tax_table(xk7Rare), ASV=taxa_names(xk7Rare))
+
+xk7Anti <-  subset_taxa(xk7Rare, ASV %in% my_antiBd)
+
+
+## Add estimated anti-Bd bac richness to metadata
+
+dfxk7A <- as(sample_data(xk7Anti), "data.frame")
+
+t_otu7A <-t(as(otu_table(xk7Anti), "matrix"))
+
+library(vegan)
+AD3 <- estimateR(t_otu7A)
+AD3 <- t(as.data.frame(AD3))
+AD3
+colnames(AD3)[colnames(AD3)=="S.obs"] <- "S.obs_anti"
+colnames(AD3)[colnames(AD3)=="S.chao1"] <- "S.chao1_anti"
+colnames(AD3)[colnames(AD3)=="S.ACE"] <- "S.ACE_anti"
+
+## Add sequence coverage info
+seqsAnti <- as.data.frame(sample_sums(xk7Anti))
+seqsAnti$SampleID <- row.names(seqsAnti)
+
+
+
+#now merge to get rarefied sequence counts and alpha estimates in mapping file of anti-Bd bac
+alpha_df_anti <- merge(AD3, seqsAnti, by = "row.names")
+alpha_df_anti$SampleID <- alpha_df_anti$Row.names
+
+#now merge to get SR and PD of rarefied in mapping file
+## you get a warning about duplicate row.names, but that's fine.
+alpha_df3 <- merge(alpha_df2, alpha_df_anti, by = "SampleID")
+
+
+## you could get a warning about duplicate row.names, but that's fine. 
+
+write.csv(alpha_df3, "XENGPro2022_meta_FINAL.csv", row.names = F)
+
+## Now add a column to divide sequenc counts anti-Bd bac by total sequence counts OF the RAREFIED total sequence counts = 2576 
+
+# Double check that all the names are coming out correctly in the merging
+#save as XENGPro2022_meta_FINAL-anti.csv
+## This now is your clean file. All negs are removed and all samples with low coverage, anti-estimated, etc.
+## delete the first two columns that were introduced into the file, but not needed
+
+
+
+
+
+```
+
+
+
+
+
+
