@@ -1,0 +1,267 @@
+﻿SampleID,Treatment,FrogID,FrogNo,DayWeekNo,Sample type,TrmtTP,TubeLabel,ExtractionDate,ExtColumn,ExtRow,Plate,PCR Date,Clean Date,Notes
+P1F1D0,P1,F1,1,D0,swab,P1D0,P1F1D0,13-Sep-22,A,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P1F4D0,P1,F4,4,D0,swab,P1D0,P1F4D0,13-Sep-22,B,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P1F8D0,P1,F8,8,D0,swab,P1D0,P1F8D0,13-Sep-22,C,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P1F10D0,P1,F10,10,D0,swab,P1D0,P1F10D0,13-Sep-22,D,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P1F13D0,P1,F13,13,D0,swab,P1D0,P1F13D0,13-Sep-22,E,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P1F15D0,P1,F15,15,D0,swab,P1D0,P1F15D0,13-Sep-22,F,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F1D0,P2,F1,1,D0,swab,P2D0,P2F1D0,13-Sep-22,G,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F4D0,P2,F4,4,D0,swab,P2D0,P2F4D0,13-Sep-22,H,1,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F7D0,P2,F7,7,D0,swab,P2D0,P2F7D0,13-Sep-22,A,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F9D0,P2,F9,9,D0,swab,P2D0,P2F9D0,13-Sep-22,B,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F13D0,P2,F13,13,D0,swab,P2D0,P2F13D0,13-Sep-22,C,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P2F17D0,P2,F17,17,D0,swab,P2D0,P2F17D0,13-Sep-22,D,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F3D0,P3,F3,3,D0,swab,P3D0,P3F3D0,13-Sep-22,E,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F7D0,P3,F7,7,D0,swab,P3D0,P3F7D0,13-Sep-22,F,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F8D0,P3,F8,8,D0,swab,P3D0,P3F8D0,13-Sep-22,G,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F11D0,P3,F11,11,D0,swab,P3D0,P3F11D0,13-Sep-22,H,2,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F15D0,P3,F15,15,D0,swab,P3D0,P3F15D0,13-Sep-22,A,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P3F16D0,P3,F16,16,D0,swab,P3D0,P3F16D0,13-Sep-22,B,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+CF11D0,C,F11,11,D0,swab,CD0,CF11D0,13-Sep-22,C,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F6D0,P4,F6,6,D0,swab,P4D0,P4F6D0,13-Sep-22,D,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F7D0,P4,F7,7,D0,swab,P4D0,P4F7D0,13-Sep-22,E,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F12D0,P4,F12,12,D0,swab,P4D0,P4F12D0,13-Sep-22,F,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F15D0,P4,F15,15,D0,swab,P4D0,P4F15D0,13-Sep-22,G,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F18D0,P4,F18,18,D0,swab,P4D0,P4F18D0,13-Sep-22,H,3,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+CF1D0,C,F1,1,D0,swab,CD0,CF1D0,13-Sep-22,A,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+CF6D0,C,F6,6,D0,swab,CD0,CF6D0,13-Sep-22,B,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+P4F4D0,P4,F4,4,D0,swab,P4D0,P4F4D0,13-Sep-22,C,4,1,15-Sep-22,17-Oct-22,"used 96-well plate bead beating, accidentally dropped into C4, switched samples but kept rest in order"
+CF12D0,C,F12,12,D0,swab,CD0,CF12D0,13-Sep-22,D,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+CF16D0,C,F16,16,D0,swab,CD0,CF16D0,13-Sep-22,E,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+CF18D0,C,F18,18,D0,swab,CD0,CF18D0,13-Sep-22,F,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+NXC91322,NA,NA,NA,NA,NXC,NANA,NXC91322,13-Sep-22,G,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+PXC91322,NA,NA,NA,NA,PXC,NANA,PXC91322,13-Sep-22,H,4,1,15-Sep-22,17-Oct-22,used 96-well plate bead beating
+NPC91522,NA,NA,NA,NA,NPC,NANA,NPC91522,NA,NA,NA,NA,15-Sep-22,27-Oct-22,
+PPC91522,NA,NA,NA,NA,PPC,NANA,PPC91522,NA,NA,NA,NA,15-Sep-22,27-Oct-22,
+P1F2D0,P1,F2,2,D0,swab,P1D0,P1F2D0,22-Sep-22,A,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P1F5D0,P1,F5,5,D0,swab,P1D0,P1F5D0,22-Sep-22,B,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P1F6D0,P1,F6,6,D0,swab,P1D0,P1F6D0,22-Sep-22,C,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P1F9D0,P1,F9,9,D0,swab,P1D0,P1F9D0,22-Sep-22,D,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P1F14D0,P1,F14,14,D0,swab,P1D0,P1F14D0,22-Sep-22,E,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P1F16D0,P1,F16,16,D0,swab,P1D0,P1F16D0,22-Sep-22,F,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F2D0,P2,F2,2,D0,swab,P2D0,P2F2D0,22-Sep-22,G,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F5D0,P2,F5,5,D0,swab,P2D0,P2F5D0,22-Sep-22,H,1,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F8D0,P2,F8,8,D0,swab,P2D0,P2F8D0,22-Sep-22,A,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F10D0,P2,F10,10,D0,swab,P2D0,P2F10D0,22-Sep-22,B,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F14D0,P2,F14,14,D0,swab,P2D0,P2F14D0,22-Sep-22,C,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P2F18D0,P2,F18,18,D0,swab,P2D0,P2F18D0,22-Sep-22,D,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F1D0,P3,F1,1,D0,swab,P3D0,P3F1D0,22-Sep-22,E,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F4D0,P3,F4,4,D0,swab,P3D0,P3F4D0,22-Sep-22,F,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F5D0,P3,F5,5,D0,swab,P3D0,P3F5D0,22-Sep-22,G,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F9D0,P3,F9,9,D0,swab,P3D0,P3F9D0,22-Sep-22,H,2,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F13D0,P3,F13,13,D0,swab,P3D0,P3F13D0,22-Sep-22,A,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P3F14D0,P3,F14,14,D0,swab,P3D0,P3F14D0,22-Sep-22,B,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F1D0,P4,F1,1,D0,swab,P4D0,P4F1D0,22-Sep-22,C,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F3D0,P4,F3,3,D0,swab,P4D0,P4F3D0,22-Sep-22,D,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F5D0,P4,F5,5,D0,swab,P4D0,P4F5D0,22-Sep-22,E,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F9D0,P4,F9,9,D0,swab,P4D0,P4F9D0,22-Sep-22,F,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F13D0,P4,F13,13,D0,swab,P4D0,P4F13D0,22-Sep-22,G,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+P4F16D0,P4,F16,16,D0,swab,P4D0,P4F16D0,22-Sep-22,H,3,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol"
+CF2D0,C,F2,2,D0,swab,CD0,CF2D0,22-Sep-22,A,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+CF4D0,C,F4,4,D0,swab,CD0,CF4D0,22-Sep-22,B,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+CF5D0,C,F5,5,D0,swab,CD0,CF5D0,22-Sep-22,C,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+CF8D0,C,F8,8,D0,swab,CD0,CF8D0,22-Sep-22,D,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+CF13D0,C,F13,13,D0,swab,CD0,CF13D0,22-Sep-22,E,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+CF17D0,C,F17,17,D0,swab,CD0,CF17D0,22-Sep-22,F,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+NXC92222,NA,NA,NA,NA,NXC,NANA,NXC92222,22-Sep-22,G,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+PXC92222,NA,NA,NA,NA,PXC,NANA,PXC92222,22-Sep-22,H,4,2,12-Oct-22,24-Oct-22,"used tubes, 96-centrifuge protocol, had to re-elute"
+NPC1012221,NA,NA,NA,NA,NPC,NANA,NPC1012221,NA,NA,NA,NA,12-Oct-22,20-Oct-22,
+NPC1012222,NA,NA,NA,NA,NPC,NANA,NPC1012222,NA,NA,NA,NA,12-Oct-22,20-Oct-22,
+PPC101222,NA,NA,NA,NA,PPC,NANA,PPC101222,NA,NA,NA,NA,12-Oct-22,20-Oct-22,
+ContSwabD0,NA,NA,NA,NA,Control Swab,NANA,ContSwabD0,26-Sep-22,A,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+CF18W1,C,F18,18,W1,swab,CW1,CF18W1,26-Sep-22,B,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+CF17W1,C,F17,17,W1,swab,CW1,CF17W1,26-Sep-22,C,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+CF16W1,C,F16,16,W1,swab,CW1,CF16W1,26-Sep-22,D,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+P4F15W1,P4,F15,15,W1,swab,P4W1,P4F15W1,26-Sep-22,E,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+P3F13W1,P3,F13,13,W1,swab,P3W1,P3F13W1,26-Sep-22,F,9,4,17-Oct-22,25-Oct-22,samples put in with leons plate
+ContSwabW1S1,NA,NA,NA,NA,Control Swab,NANA,ContSwabW1S1,26-Sep-22,G,9,4,17-Oct-22,25-Oct-22,"samples put in with leons plate, MAYBE SWITCHED WITH P1F18W1"
+P1F18W1,P1,F18,18,W1,swab,P1W1,P1F18W1,26-Sep-22,H,9,4,17-Oct-22,25-Oct-22,"samples put in with leons plate, MAYBE SWITCHED WITH CONTSWABW1S1"
+P1F7D0,P1,F7,7,D0,swab,P1D0,P1F7D0,27-Sep-22,A,5,3,6-Oct-22,24-Oct-22,
+P1F12D0,P1,F12,12,D0,swab,P1D0,P1F12D0,27-Sep-22,B,5,3,6-Oct-22,24-Oct-22,
+P1F18D0,P1,F18,18,D0,swab,P1D0,P1F18D0,27-Sep-22,C,5,3,6-Oct-22,24-Oct-22,
+P2F6D0,P2,F6,6,D0,swab,P2D0,P2F6D0,27-Sep-22,D,5,3,6-Oct-22,24-Oct-22,
+P2F12D0,P2,F12,12,D0,swab,P2D0,P2F12D0,27-Sep-22,E,5,3,6-Oct-22,24-Oct-22,
+P2F15D0,P2,F15,15,D0,swab,P2D0,P2F15D0,27-Sep-22,F,5,3,6-Oct-22,24-Oct-22,
+P3F6D0,P3,F6,6,D0,swab,P3D0,P3F6D0,27-Sep-22,G,5,3,6-Oct-22,24-Oct-22,
+P3F12D0,P3,F12,12,D0,swab,P3D0,P3F12D0,27-Sep-22,H,5,3,6-Oct-22,24-Oct-22,
+P3F18D0,P3,F18,18,D0,swab,P3D0,P3F18D0,27-Sep-22,A,6,3,6-Oct-22,20-Oct-22,
+P4F8D0,P4,F8,8,D0,swab,P4D0,P4F8D0,27-Sep-22,B,6,3,6-Oct-22,20-Oct-22,
+P4F11D0,P4,F11,11,D0,swab,P4D0,P4F11D0,27-Sep-22,C,6,3,6-Oct-22,20-Oct-22,
+P4F14D0,P4,F14,14,D0,swab,P4D0,P4F14D0,27-Sep-22,D,6,3,6-Oct-22,20-Oct-22,
+P4F17D0,P4,F17,17,D0,swab,P4D0,P4F17D0,27-Sep-22,E,6,3,6-Oct-22,20-Oct-22,
+CF7D0,C,F7,7,D0,swab,CD0,CF7D0,27-Sep-22,F,6,3,6-Oct-22,20-Oct-22,
+CF10D0,C,F10,10,D0,swab,CD0,CF10D0,27-Sep-22,G,6,3,6-Oct-22,20-Oct-22,
+CF14D0,C,F14,14,D0,swab,CD0,CF14D0,27-Sep-22,H,6,3,6-Oct-22,20-Oct-22,
+P1F3D0,P1,F3,3,D0,swab,P1D0,P1F3D0,27-Sep-22,A,7,3,6-Oct-22,20-Oct-22,
+P1F11D0,P1,F11,11,D0,swab,P1D0,P1F11D0,27-Sep-22,B,7,3,6-Oct-22,20-Oct-22,
+P1F17D0,P1,F17,17,D0,swab,P1D0,P1F17D0,27-Sep-22,C,7,3,6-Oct-22,20-Oct-22,
+P2F3D0,P2,F3,3,D0,swab,P2D0,P2F3D0,27-Sep-22,D,7,3,6-Oct-22,20-Oct-22,
+P2F11D0,P2,F11,11,D0,swab,P2D0,P2F11D0,27-Sep-22,E,7,3,6-Oct-22,20-Oct-22,
+P2F16D0,P2,F16,16,D0,swab,P2D0,P2F16D0,27-Sep-22,F,7,3,6-Oct-22,20-Oct-22,
+P3F2D0,P3,F2,2,D0,swab,P3D0,P3F2D0,27-Sep-22,G,7,3,6-Oct-22,20-Oct-22,
+P3F10D0,P3,F10,10,D0,swab,P3D0,P3F10D0,27-Sep-22,H,7,3,6-Oct-22,20-Oct-22,
+P3F17D0,P3,F17,17,D0,swab,P3D0,P3F17D0,27-Sep-22,A,8,3,6-Oct-22,20-Oct-22,
+P4F2D0,P4,F2,2,D0,swab,P4D0,P4F2D0,27-Sep-22,B,8,3,6-Oct-22,20-Oct-22,
+P4F10D0,P4,F10,10,D0,swab,P4D0,P4F10D0,27-Sep-22,C,8,3,6-Oct-22,20-Oct-22,
+CF3D0,C,F3,3,D0,swab,CD0,CF3D0,27-Sep-22,D,8,3,6-Oct-22,20-Oct-22,
+CF9D0,C,F9,9,D0,swab,CD0,CF9D0,27-Sep-22,E,8,3,6-Oct-22,20-Oct-22,
+CF15D0,C,F15,15,D0,swab,CD0,CF15D0,27-Sep-22,F,8,3,6-Oct-22,20-Oct-22,
+NPC1006221,NA,NA,NA,NA,NPC,NANA,NPC1006221,NA,NA,NA,NA,6-Oct-22,20-Oct-22,
+NPC1006222,NA,NA,NA,NA,NPC,NANA,NPC1006222,NA,NA,NA,NA,6-Oct-22,20-Oct-22,
+PPC100622,NA,NA,NA,NA,PPC,NANA,PPC100622,NA,NA,NA,NA,6-Oct-22,20-Oct-22,
+P1F2W1,P1,F2,2,W1,swab,P1W1,P1F2W1,3-Oct-22,A,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P1F10W1,P1,F10,10,W1,swab,P1W1,P1F10W1,3-Oct-22,B,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P1F16W1,P1,F16,16,W1,swab,P1W1,P1F16W1,3-Oct-22,C,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F2W1,P2,F2,2,W1,swab,P2W1,P2F2W1,3-Oct-22,D,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F10W1,P2,F10,10,W1,swab,P2W1,P2F10W1,3-Oct-22,E,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F16W1,P2,F16,16,W1,swab,P2W1,P2F16W1,3-Oct-22,F,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F2W1,P3,F2,2,W1,swab,P3W1,P3F2W1,3-Oct-22,G,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F10W1,P3,F10,10,W1,swab,P3W1,P3F10W1,3-Oct-22,H,1,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F16W1,P3,F16,16,W1,swab,P3W1,P3F16W1,3-Oct-22,A,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P4F2W1,P4,F2,2,W1,swab,P4W1,P4F2W1,3-Oct-22,B,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P4F10W1,P4,F10,10,W1,swab,P4W1,P4F10W1,3-Oct-22,C,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P4F16W1,P4,F16,16,W1,swab,P4W1,P4F16W1,3-Oct-22,D,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+CF1W1,C,F1,1,W1,swab,CW1,CF1W1,3-Oct-22,E,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+CF6W1,C,F6,6,W1,swab,CW1,CF6W1,3-Oct-22,F,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+CF14W1,C,F14,14,W1,swab,CW1,CF14W1,3-Oct-22,G,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P1F14W2,P1,F14,14,W2,swab,P1W2,P1F14W2,3-Oct-22,H,2,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P1F16W2,P1,F16,16,W2,swab,P1W2,P1F16W2,3-Oct-22,A,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P1F17W2,P1,F17,17,W2,swab,P1W2,P1F17W2,3-Oct-22,B,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F14W2,P2,F14,14,W2,swab,P2W2,P2F14W2,3-Oct-22,C,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F16W2,P2,F16,16,W2,swab,P2W2,P2F16W2,3-Oct-22,D,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P2F17W2,P2,F17,17,W2,swab,P2W2,P2F17W2,3-Oct-22,E,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F14W2,P3,F14,14,W2,swab,P3W2,P3F14W2,3-Oct-22,F,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F16W2,P3,F16,16,W2,swab,P3W2,P3F16W2,3-Oct-22,G,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P3F17W2,P3,F17,17,W2,swab,P3W2,P3F17W2,3-Oct-22,H,3,5,6-Oct-22,18-Oct-22,"robot poked holes in filter plate in first three columns, tried to save samples by running elution from holes and leftover bead plate in col 7-9 and then col 10-12 "
+P4F14W2,P4,F14,14,W2,swab,P4W2,P4F14W2,3-Oct-22,A,4,5,6-Oct-22,18-Oct-22,
+P4F16W2,P4,F16,16,W2,swab,P4W2,P4F16W2,3-Oct-22,B,4,5,6-Oct-22,18-Oct-22,
+P4F17W2,P4,F17,17,W2,swab,P4W2,P4F17W2,3-Oct-22,C,4,5,6-Oct-22,18-Oct-22,
+CF14W2,C,F14,14,W2,swab,CW2,CF14W2,3-Oct-22,D,4,5,6-Oct-22,18-Oct-22,
+CF16W2,C,F16,16,W2,swab,CW2,CF16W2,3-Oct-22,E,4,5,6-Oct-22,18-Oct-22,
+CF17W2,C,F17,17,W2,swab,CW2,CF17W2,3-Oct-22,F,4,5,6-Oct-22,18-Oct-22,
+P1F14W3,P1,F14,14,W3,swab,P1W3,P1F14W3,3-Oct-22,G,4,5,6-Oct-22,18-Oct-22,
+P1F16W3,P1,F16,16,W3,swab,P1W3,P1F16W3,3-Oct-22,H,4,5,6-Oct-22,18-Oct-22,
+P1F17W3,P1,F17,17,W3,swab,P1W3,P1F17W3,3-Oct-22,A,5,5,6-Oct-22,18-Oct-22,
+P2F14W3,P2,F14,14,W3,swab,P2W3,P2F14W3,3-Oct-22,B,5,5,6-Oct-22,18-Oct-22,
+P2F16W3,P2,F16,16,W3,swab,P2W3,P2F16W3,3-Oct-22,C,5,5,6-Oct-22,18-Oct-22,
+P2F17W3,P2,F17,17,W3,swab,P2W3,P2F17W3,3-Oct-22,D,5,5,6-Oct-22,18-Oct-22,
+P3F14W3,P3,F14,14,W3,swab,P3W3,P3F14W3,3-Oct-22,E,5,5,6-Oct-22,18-Oct-22,
+P3F16W3,P3,F16,16,W3,swab,P3W3,P3F16W3,3-Oct-22,F,5,5,6-Oct-22,18-Oct-22,
+P3F17W3,P3,F17,17,W3,swab,P3W3,P3F17W3,3-Oct-22,G,5,5,6-Oct-22,18-Oct-22,
+P4F14W3,P4,F14,14,W3,swab,P4W3,P4F14W3,3-Oct-22,H,5,5,6-Oct-22,18-Oct-22,
+P4F16W3,P4,F16,16,W3,swab,P4W3,P4F16W3,3-Oct-22,A,6,5,6-Oct-22,18-Oct-22,
+P4F17W3,P4,F17,17,W3,swab,P4W3,P4F17W3,3-Oct-22,B,6,5,6-Oct-22,18-Oct-22,
+CF14W3,C,F14,14,W3,swab,CW3,CF14W3,3-Oct-22,C,6,5,6-Oct-22,18-Oct-22,
+CF16W3,C,F16,16,W3,swab,CW3,CF16W3,3-Oct-22,D,6,5,6-Oct-22,18-Oct-22,
+CF17W3,C,F17,17,W3,swab,CW3,CF17W3,3-Oct-22,E,6,5,6-Oct-22,18-Oct-22,
+P2F13W1,P2,F13,13,W1,swab,P2W1,P2F13W1,3-Oct-22,F,6,5,6-Oct-22,18-Oct-22,
+NXC10322,NA,NA,NA,NA,NXC,NANA,NXC10322,3-Oct-22,G,6,5,6-Oct-22,18-Oct-22,
+PXC10322,NA,NA,NA,NA,PXC,NANA,PXC10322,3-Oct-22,H,6,5,6-Oct-22,18-Oct-22,
+P1F3W1,P1,F3,3,W1,swab,P1W1,P1F3W1,5-Oct-22,A,7,1,12-Oct-22,24-Oct-22,
+P1F15W1,P1,F15,15,W1,swab,P1W1,P1F15W1,5-Oct-22,B,7,1,12-Oct-22,24-Oct-22,
+P2F3W1,P2,F3,3,W1,swab,P2W1,P2F3W1,5-Oct-22,C,7,1,12-Oct-22,24-Oct-22,
+P3F3W1,P3,F3,3,W1,swab,P3W1,P3F3W1,5-Oct-22,D,7,1,12-Oct-22,24-Oct-22,
+P3F15W1,P3,F15,15,W1,swab,P3W1,P3F15W1,5-Oct-22,E,7,1,12-Oct-22,24-Oct-22,
+P4F3W1,P4,F3,3,W1,swab,P4W1,P4F3W1,5-Oct-22,F,7,1,12-Oct-22,24-Oct-22,
+P4F18W1,P4,F18,18,W1,swab,P4W1,P4F18W1,5-Oct-22,G,7,1,12-Oct-22,24-Oct-22,
+CF2W1,C,F2,2,W1,swab,CW1,CF2W1,5-Oct-22,H,7,1,12-Oct-22,24-Oct-22,
+CF7W1,C,F7,7,W1,swab,CW1,CF7W1,5-Oct-22,A,8,1,12-Oct-22,24-Oct-22,
+P1F7W1,P1,F7,7,W1,swab,P1W1,P1F7W1,5-Oct-22,B,8,1,12-Oct-22,24-Oct-22,
+P2F6W1,P2,F6,6,W1,swab,P2W1,P2F6W1,5-Oct-22,C,8,1,12-Oct-22,24-Oct-22,
+P3F5W1,P3,F5,5,W1,swab,P3W1,P3F5W1,5-Oct-22,D,8,1,12-Oct-22,24-Oct-22,
+P4F4W1,P4,F4,4,W1,swab,P4W1,P4F4W1,5-Oct-22,E,8,1,12-Oct-22,24-Oct-22,
+CF10W1,C,F10,10,W1,swab,CW1,CF10W1,5-Oct-22,F,8,1,12-Oct-22,24-Oct-22,
+P1F13W1,P1,F13,13,W1,swab,P1W1,P1F13W1,5-Oct-22,G,8,1,12-Oct-22,24-Oct-22,
+P1F17W1,P1,F17,17,W1,swab,P1W1,P1F17W1,5-Oct-22,H,8,1,12-Oct-22,24-Oct-22,
+P2F8W1,P2,F8,8,W1,swab,P2W1,P2F8W1,5-Oct-22,A,9,1,12-Oct-22,24-Oct-22,
+P2F18W1,P2,F18,18,W1,swab,P2W1,P2F18W1,5-Oct-22,B,9,1,12-Oct-22,24-Oct-22,
+P3F12W1,P3,F12,12,W1,swab,P3W1,P3F12W1,5-Oct-22,C,9,1,12-Oct-22,24-Oct-22,
+CF5W1,C,F5,5,W1,swab,CW1,CF5W1,5-Oct-22,D,9,1,12-Oct-22,24-Oct-22,
+P1F5W1,P1,F5,5,W1,swab,P1W1,P1F5W1,5-Oct-22,E,9,1,12-Oct-22,24-Oct-22,
+P1F9W1,P1,F9,9,W1,swab,P1W1,P1F9W1,5-Oct-22,F,9,1,12-Oct-22,24-Oct-22,
+P1F14W1,P1,F14,14,W1,swab,P1W1,P1F14W1,5-Oct-22,G,9,1,12-Oct-22,24-Oct-22,
+P2F11W1,P2,F11,11,W1,swab,P2W1,P2F11W1,5-Oct-22,H,9,1,12-Oct-22,24-Oct-22,
+P3F4W1,P3,F4,4,W1,swab,P3W1,P3F4W1,5-Oct-22,A,10,1,12-Oct-22,24-Oct-22,
+P3F7W1,P3,F7,7,W1,swab,P3W1,P3F7W1,5-Oct-22,B,10,1,12-Oct-22,24-Oct-22,
+P3F17W1,P3,F17,17,W1,swab,P3W1,P3F17W1,5-Oct-22,C,10,1,12-Oct-22,24-Oct-22,
+P4F5W1,P4,F5,5,W1,swab,P4W1,P4F5W1,5-Oct-22,D,10,1,12-Oct-22,24-Oct-22,
+P4F12W1,P4,F12,12,W1,swab,P4W1,P4F12W1,5-Oct-22,E,10,1,12-Oct-22,24-Oct-22,
+P4F14W1,P4,F14,14,W1,swab,P4W1,P4F14W1,5-Oct-22,F,10,1,12-Oct-22,24-Oct-22,
+CF3W1,C,F3,3,W1,swab,CW1,CF3W1,5-Oct-22,G,10,1,12-Oct-22,24-Oct-22,
+CF15W2,C,F15,15,W2,swab,CW2,CF15W2,5-Oct-22,H,10,1,12-Oct-22,24-Oct-22,
+P2F18W2,P2,F18,18,W2,swab,P2W2,P2F18W2,5-Oct-22,A,11,1,12-Oct-22,24-Oct-22,
+P3F18W2,P3,F18,18,W2,swab,P3W2,P3F18W2,5-Oct-22,B,11,1,12-Oct-22,24-Oct-22,
+CF13W2,C,F13,13,W2,swab,CW2,CF13W2,5-Oct-22,C,11,1,12-Oct-22,24-Oct-22,
+P1F13W3,P1,F13,13,W3,swab,P1W3,P1F13W3,5-Oct-22,D,11,1,12-Oct-22,24-Oct-22,
+P1F15W3,P1,F15,15,W3,swab,P1W3,P1F15W3,5-Oct-22,E,11,1,12-Oct-22,24-Oct-22,
+CF13W3,C,F13,13,W3,swab,CW3,CF13W3,5-Oct-22,F,11,1,12-Oct-22,24-Oct-22,
+CF18W3,C,F18,18,W3,swab,CW3,CF18W3,5-Oct-22,G,11,1,12-Oct-22,24-Oct-22,
+P1F15W2,P1,F15,15,W2,swab,P1W2,P1F15W2,5-Oct-22,H,11,1,12-Oct-22,24-Oct-22,
+P2F13W3,P2,F13,13,W3,swab,P2W3,P2F13W3,5-Oct-22,A,12,1,12-Oct-22,24-Oct-22,
+P3F13W2,P3,F13,13,W2,swab,P3W2,P3F13W2,5-Oct-22,B,12,1,12-Oct-22,24-Oct-22,
+P3F18W3,P3,F18,18,W3,swab,P3W3,P3F18W3,5-Oct-22,C,12,1,12-Oct-22,24-Oct-22,
+P4F15W3,P4,F15,15,W3,swab,P4W3,P4F15W3,5-Oct-22,D,12,1,12-Oct-22,24-Oct-22,
+P3F15W3,P3,F15,15,W3,swab,P3W3,P3F15W3,5-Oct-22,E,12,1,12-Oct-22,24-Oct-22,
+ContSwabW1S2,NA,NA,NA,W1,Control Swab,NAW1,ContSwabW1S2,5-Oct-22,F,12,1,12-Oct-22,24-Oct-22,
+NXC100522,NA,NA,NA,NA,NXC,NANA,NXC100522,5-Oct-22,G,12,1,12-Oct-22,24-Oct-22,
+PXC100522,NA,NA,NA,NA,PXC,NANA,PXC100522,5-Oct-22,H,12,1,12-Oct-22,24-Oct-22,
+P1F1W1,P1,F1,1,W1,swab,P1W1,P1F1W1,13-Oct-22,A,5,2,17-Oct-22,25-Oct-22,
+P1F4W1,P1,F4,4,W1,swab,P1W1,P1F4W1,13-Oct-22,B,5,2,17-Oct-22,25-Oct-22,
+P1F6W1,P1,F6,6,W1,swab,P1W1,P1F6W1,13-Oct-22,C,5,2,17-Oct-22,25-Oct-22,
+P1F8W1,P1,F8,8,W1,swab,P1W1,P1F8W1,13-Oct-22,D,5,2,17-Oct-22,25-Oct-22,
+P1F11W1,P1,F11,11,W1,swab,P1W1,P1F11W1,13-Oct-22,E,5,2,17-Oct-22,25-Oct-22,
+P1F12W1,P1,F12,12,W1,swab,P1W1,P1F12W1,13-Oct-22,F,5,2,17-Oct-22,25-Oct-22,
+P2F1W1,P2,F1,1,W1,swab,P2W1,P2F1W1,13-Oct-22,G,5,2,17-Oct-22,25-Oct-22,
+P2F4W1,P2,F4,4,W1,swab,P2W1,P2F4W1,13-Oct-22,H,5,2,17-Oct-22,25-Oct-22,
+P2F5W1,P2,F5,5,W1,swab,P2W1,P2F5W1,13-Oct-22,A,6,2,17-Oct-22,25-Oct-22,
+P2F7W1,P2,F7,7,W1,swab,P2W1,P2F7W1,13-Oct-22,B,6,2,17-Oct-22,25-Oct-22,
+P2F9W1,P2,F9,9,W1,swab,P2W1,P2F9W1,13-Oct-22,C,6,2,17-Oct-22,25-Oct-22,
+P2F12W1,P2,F12,12,W1,swab,P2W1,P2F12W1,13-Oct-22,D,6,2,17-Oct-22,25-Oct-22,
+P2F14W1,P2,F14,14,W1,swab,P2W1,P2F14W1,13-Oct-22,E,6,2,17-Oct-22,25-Oct-22,
+P2F15W1,P2,F15,15,W1,swab,P2W1,P2F15W1,13-Oct-22,F,6,2,17-Oct-22,25-Oct-22,
+P2F17W1,P2,F17,17,W1,swab,P2W1,P2F17W1,13-Oct-22,G,6,2,17-Oct-22,25-Oct-22,
+P3F1W1,P3,F1,1,W1,swab,P3W1,P3F1W1,13-Oct-22,H,6,2,17-Oct-22,25-Oct-22,
+P4F7W1,P4,F7,7,W1,swab,P4W1,P4F7W1,13-Oct-22,A,7,2,17-Oct-22,25-Oct-22,
+P4F8W1,P4,F8,8,W1,swab,P4W1,P4F8W1,13-Oct-22,B,7,2,17-Oct-22,25-Oct-22,
+P4F9W1,P4,F9,9,W1,swab,P4W1,P4F9W1,13-Oct-22,C,7,2,17-Oct-22,25-Oct-22,
+P4F11W1,P4,F11,11,W1,swab,P4W1,P4F11W1,13-Oct-22,D,7,2,17-Oct-22,25-Oct-22,
+P4F13W1,P4,F13,13,W1,swab,P4W1,P4F13W1,13-Oct-22,E,7,2,17-Oct-22,25-Oct-22,
+P4F17W1,P4,F17,17,W1,swab,P4W1,P4F17W1,13-Oct-22,F,7,2,17-Oct-22,25-Oct-22,
+CF4W1,C,F4,4,W1,swab,CW1,CF4W1,13-Oct-22,G,7,2,17-Oct-22,25-Oct-22,
+CF8W1,C,F8,8,W1,swab,CW1,CF8W1,13-Oct-22,H,7,2,17-Oct-22,25-Oct-22,
+P3F6W1,P3,F6,6,W1,swab,P3W1,P3F6W1,13-Oct-22,A,8,2,17-Oct-22,25-Oct-22,
+P3F8W1,P3,F8,8,W1,swab,P3W1,P3F8W1,13-Oct-22,B,8,2,17-Oct-22,25-Oct-22,
+P3F9W1,P3,F9,9,W1,swab,P3W1,P3F9W1,13-Oct-22,C,8,2,17-Oct-22,25-Oct-22,
+P3F11W1,P3,F11,11,W1,swab,P3W1,P3F11W1,13-Oct-22,D,8,2,17-Oct-22,25-Oct-22,
+P3F14W1,P3,F14,14,W1,swab,P3W1,P3F14W1,13-Oct-22,E,8,2,17-Oct-22,25-Oct-22,
+P3F18W1,P3,F18,18,W1,swab,P3W1,P3F18W1,13-Oct-22,F,8,2,17-Oct-22,25-Oct-22,
+P4F1W1,P4,F1,1,W1,swab,P4W1,P4F1W1,13-Oct-22,G,8,2,17-Oct-22,25-Oct-22,
+P4F6W1,P4,F6,6,W1,swab,P4W1,P4F6W1,13-Oct-22,H,8,2,17-Oct-22,25-Oct-22,
+CF9W1,C,F9,9,W1,swab,CW1,CF9W1,13-Oct-22,A,9,2,17-Oct-22,25-Oct-22,
+CF11W1,C,F11,11,W1,swab,CW1,CF11W1,13-Oct-22,B,9,2,17-Oct-22,25-Oct-22,
+CF12W1,C,F12,12,W1,swab,CW1,CF12W1,13-Oct-22,C,9,2,17-Oct-22,25-Oct-22,
+CF13W1,C,F13,13,W1,swab,CW1,CF13W1,13-Oct-22,D,9,2,17-Oct-22,25-Oct-22,
+CF15W1,C,F15,15,W1,swab,CW1,CF15W1,13-Oct-22,E,9,2,17-Oct-22,25-Oct-22,
+P4F13W2,P4,F13,13,W2,swab,P4W2,P4F13W2,13-Oct-22,F,9,2,17-Oct-22,25-Oct-22,
+P1F13W2,P1,F13,13,W2,swab,P1W2,P1F13W2,13-Oct-22,G,9,2,17-Oct-22,25-Oct-22,
+P2F13W2,P2,F13,13,W2,swab,P2W2,P2F13W2,13-Oct-22,H,9,2,17-Oct-22,25-Oct-22,
+P3F13W3,P3,F13,13,W3,swab,P3W3,P3F13W3,13-Oct-22,A,10,2,17-Oct-22,27-Oct-22,
+P4F13W3,P4,F13,13,W3,swab,P4W3,P4F13W3,13-Oct-22,B,10,2,17-Oct-22,27-Oct-22,
+P2F15W2,P2,F15,15,W2,swab,P2W2,P2F15W2,13-Oct-22,C,10,2,17-Oct-22,27-Oct-22,
+P3F15W2,P3,F15,15,W2,swab,P3W2,P3F15W2,13-Oct-22,D,10,2,17-Oct-22,27-Oct-22,
+P4F15W2,P4,F15,15,W2,swab,P4W2,P4F15W2,13-Oct-22,E,10,2,17-Oct-22,27-Oct-22,
+CF15W3,C,F15,15,W3,swab,CW3,CF15W3,13-Oct-22,F,10,2,17-Oct-22,27-Oct-22,
+P2F15W3,P2,F15,15,W3,swab,P2W3,P2F15W3,13-Oct-22,G,10,2,17-Oct-22,27-Oct-22,
+P1F18W2,P1,F18,18,W2,swab,P1W2,P1F18W2,13-Oct-22,H,10,2,17-Oct-22,27-Oct-22,
+P1F18W3,P1,F18,18,W3,swab,P1W3,P1F18W3,13-Oct-22,A,11,2,17-Oct-22,27-Oct-22,
+P2F18W3,P2,F18,18,W3,swab,P2W3,P2F18W3,13-Oct-22,B,11,2,17-Oct-22,27-Oct-22,
+P4F18W2,P4,F18,18,W2,swab,P4W2,P4F18W2,13-Oct-22,C,11,2,17-Oct-22,27-Oct-22,
+P4F18W3,P4,F18,18,W3,swab,P4W3,P4F18W3,13-Oct-22,D,11,2,17-Oct-22,27-Oct-22,
+CF18W2,C,F18,18,W2,swab,CW2,CF18W2,13-Oct-22,E,11,2,17-Oct-22,27-Oct-22,
+ContSwabW2S1,NA,NA,NA,W2,swab,NAW2,ContSwabW2S1,13-Oct-22,F,11,2,17-Oct-22,27-Oct-22,
+ContSwabW3S1,NA,NA,NA,W3,swab,NAW3,ContSwabW3S1,13-Oct-22,G,11,2,17-Oct-22,27-Oct-22,
+NXC101322,NA,NA,NA,NA,NXC,NANA,NXC101322,13-Oct-22,A,12,2,17-Oct-22,27-Oct-22,
+PXC101322,NA,NA,NA,NA,PXC,NANA,PXC101322,13-Oct-22,B,12,2,17-Oct-22,27-Oct-22,
+NPC1017221,NA,NA,NA,NA,NPC,NANA,NPC1017221,NA,NA,NA,NA,17-Oct-22,27-Oct-22,
+NPC1012722,NA,NA,NA,NA,NPC,NANA,NPC1012722,NA,NA,NA,NA,17-Oct-22,27-Oct-22,
+PPC101722,NA,NA,NA,NA,PPC,NANA,PPC101722,NA,NA,NA,NA,17-Oct-22,27-Oct-22,
