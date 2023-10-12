@@ -1,0 +1,5 @@
+#concatenate fastq.gz files with bash, be in folder where files are located
+(base) joe@pop-os:~/Documents/Smithsonian/Xenopus Probiotic Project/Trial$ cat 2_CF1D0_S25_L001_R1_001.fastq.gz CF1D0_S25_L001_R1_001.fastq.gz > combined_CF1D0_S25_L001_R1_001.fastq.gz
+
+#check number of lines in new file, quality control step
+wc -l combined_CF1D0_S25_L001_R1_001.fastq.gz 
