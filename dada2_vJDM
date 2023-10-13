@@ -43,10 +43,10 @@ devtools::install_github("benjjneb/dada2")
 
 ## Run data is here. On home desktop. 
 
-setwd("/Users/lkgentry/OneDrive - Smithsonian Institution/GrayferLabExperiments/XenoProbioticsBothRunsFastQ/XenoProbiotics-371840469/636614131/")
+setwd("/home/joe/Documents/Smithsonian/XenopusProbioticProject/XenopusConcatenatedRuns")
 
 
-path <- "/Users/lkgentry/OneDrive - Smithsonian Institution/GrayferLabExperiments/XenoProbioticsBothRunsFastQ/XenoProbiotics-371840469/636614131/"
+path <- "/home/joe/Documents/Smithsonian/XenopusProbioticProject/XenopusConcatenatedRuns"
 list.files(path)
 
 
@@ -63,11 +63,16 @@ sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 
 #INSPECTION OF QUALITY PROFILES
 
-plotQualityProfile(fnFs[8:16])
+qualityforward <- plotQualityProfile(fnFs[8:16])
+qualityreverse <- plotQualityProfile(fnRs[8:16])
 
+tiff("qualityforward.tiff", width = 325, height = 250, compression="lzw", units="mm", res=400)
+qualityforward
+dev.off()
 
-plotQualityProfile(fnRs[8:16])
-
+tiff("qualityreverse.tiff", width = 325, height = 250, compression="lzw", units="mm", res=400)
+qualityreverse
+dev.off()
 
 ## Quality looks ok, starts dropping on reverse around 150
 ## Since need to trim forward primer off 19 bp, will do 275. We want 450 bp merged
@@ -113,15 +118,19 @@ out2 <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(260,190),
 head(out2)
 str(out2)
 mean(out2[,2])
+#16313.55
 mean(out2[,1])
+#37248.39
 
-## an average pf 80% with this is good. First run 16%. Second run 63%
+## an average pf 80% with this is good. Concatenated runs 0.4379666 (44%)
 mean(out2[,2])/mean(out2[,1])
 
 
 ## If comes back as zero, you have to remove the main fastq sequencing file to learn errors and start again
 table(file.exists(filtFs))
+#265
 table(file.exists(filtRs))
+#265
 
 ## Run 1- Manually had to remove PXC100522 sample and NPC1006222
 
@@ -132,11 +141,23 @@ table(file.exists(filtRs))
 
 ## GOING with out2
 
-errF <- learnErrors(filtFs, multithread=TRUE)
-errR <- learnErrors(filtRs, multithread=TRUE)
+errF <- learnErrors(filtFs, multithread=FALSE)
+#103390205 total bases in 429005 reads from 22 samples will be used for learning the error rates.
+#Warning message:closing unused connection 3 (/home/joe/Documents/Smithsonian/XenopusProbioticProject/XenopusConcatenatedRuns/filtered/CF14W1_F_filt.fastq.gz) 
 
+errR <- learnErrors(filtRs, multithread=FALSE)
+#102430710 total bases in 599010 reads from 31 samples will be used for learning the error rates.
 
-plotErrors(errF, nominalQ=TRUE)
+plotErrorsF <- plotErrors(errF, nominalQ=TRUE)
+plotErrorsR <- plotErrors(errR, nominalQ=TRUE)
+
+tiff("plotErrorsF.tiff", width = 325, height = 250, compression="lzw", units="mm", res=400)
+plotErrorsF
+dev.off()
+
+tiff("plotErrorsR.tiff", width = 325, height = 250, compression="lzw", units="mm", res=400)
+plotErrorsR
+dev.off()
 
 #errors look good for this run. Should follow black line closely
 
@@ -146,12 +167,17 @@ derepRs <- derepFastq(filtRs, verbose=TRUE)
 names(derepFs) <- sample.names
 names(derepRs) <- sample.names
 
-dadaFs <- dada(derepFs, err=errF, multithread=TRUE)
-
-dadaRs <- dada(derepRs, err=errR, multithread=TRUE)
-
+dadaFs <- dada(derepFs, err=errF, multithread=FALSE)
 dadaFs[[1]]
+#dada-class: object describing DADA2 denoising results
+#156 sequence variants were inferred from 4108 input unique sequences.
+#Key parameters: OMEGA_A = 1e-40, OMEGA_C = 1e-40, BAND_SIZE = 16
 
+dadaRs <- dada(derepRs, err=errR, multithread=FALSE)
+dadaRs[[1]]
+#dada-class: object describing DADA2 denoising results
+#89 sequence variants were inferred from 5124 input unique sequences.
+#Key parameters: OMEGA_A = 1e-40, OMEGA_C = 1e-40, BAND_SIZE = 16
 
 mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE)
 
@@ -173,10 +199,10 @@ saveRDS(seqtab, "XengPro2022_run2_seqtab.rds")
   install.packages("BiocManager")
 
 #if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+install.packages("BiocManager")
 #BiocManager::install("dada2", version = "3.16")
 
-#BiocManager::install("DECIPHER")
+BiocManager::install("DECIPHER")
 
 library(BiocManager)  
 library(DECIPHER)
@@ -187,25 +213,27 @@ library(DECIPHER)
   
   
 # Merge multiple runs
-st1 <- readRDS("XengPro2022_run1_seqtab.rds")
-st2 <- readRDS("XengPro2022_run2_seqtab.rds")
+st <- readRDS("XenoPro2022_concatenatedruns_seqtab.rds")
   
 ## You get an error message "Duplicated sample names detected in rownames", but this is ok
 ## dada2 is just letting you know this
-st.all <- mergeSequenceTables(st1, st2, repeats = "sum")
+#st.all <- mergeSequenceTables(st1, st2, repeats = "sum")
   
-dim(st.all)
+dim(st)
 
 
 ## Distribution of amplicon sizes in bp
-table(nchar(getSequences(st.all)))
 
-seqtab.nochim <- removeBimeraDenovo(st.all, method="consensus", multithread=TRUE, verbose=TRUE)
+ampliconsizetable <- table(nchar(getSequences(st)))
+#table(nchar(getSequences(st)))
+
+seqtab.nochim <- removeBimeraDenovo(st, method="consensus", multithread=FALSE, verbose=TRUE)
 
 dim(seqtab.nochim)
 
-## Still retain 94.5% of sequences after chimera removal
-sum(seqtab.nochim)/sum(st.all)
+## Still retain 94.2% of sequences after chimera removal
+sum(seqtab.nochim)/sum(st)
+#0.9417458
 
 rowSums(seqtab.nochim)
 
@@ -224,14 +252,14 @@ rownames(track) <- sample.names
 head(track)
 
 
-write.csv(track, "dada2_output_XengPro_combined.csv")
+write.csv(track, "dada2_output_XengPro_concatenated.csv")
 
 
 ## https://benjjneb.github.io/dada2/training.html
 ## Assign taxonomy is up three directories so that I can use these files for multiple projects
-taxa <- assignTaxonomy(seqtab.nochim, "/Users/lkgentry/Documents/Microbiome Analysis/silva_nr99_v138.1_train_set.fa.gz", multithread=TRUE)
+taxa <- assignTaxonomy(seqtab.nochim, "/home/joe/Databases/silva_nr99_v138.1_train_set.fa.gz", multithread=FALSE)
 
-taxa <- addSpecies(taxa, "/Users/lkgentry/Documents/Microbiome Analysis/silva_species_assignment_v138.1 (1).fa.gz")
+taxa <- addSpecies(taxa, "/home/joe/Databases/silva_species_assignment_v138.1.fa.gz")
 
 
 
