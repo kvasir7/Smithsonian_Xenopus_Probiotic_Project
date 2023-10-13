@@ -87,7 +87,7 @@ filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))
                    #   maxN=0, maxEE=c(2,2), trimLeft = 19, trimRight = 23, 
                     #  truncQ=2, rm.phix=TRUE,
                     #  compress=TRUE, multithread=TRUE) 
-out2 <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(260,190),
+#out2 <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(260,190),
                       maxN=0, maxEE=c(2,5), trimLeft = 19, trimRight = 23, 
                       truncQ=2, rm.phix=TRUE,
                       compress=TRUE, multithread=TRUE)
@@ -100,6 +100,14 @@ out2 <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(260,190),
                      # maxN=0, maxEE=c(2,5), trimLeft = 19, trimRight = 23, 
                      # truncQ=2, rm.phix=TRUE,
                      # compress=TRUE, multithread=TRUE)
+
+#matchIDs=TRUE included to enforce read matching. Multithread turned off.
+out2 <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(260,190),
+                      maxN=0, maxEE=c(2,5), trimLeft = 19, trimRight = 23, 
+                      truncQ=2, rm.phix=TRUE, matchIDs=TRUE,
+                      compress=TRUE, multithread=FALSE)
+
+
 
 
 head(out2)
