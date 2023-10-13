@@ -257,7 +257,7 @@ write.csv(track, "dada2_output_XengPro_concatenated.csv")
 
 ## https://benjjneb.github.io/dada2/training.html
 ## Assign taxonomy is up three directories so that I can use these files for multiple projects
-taxa <- assignTaxonomy(seqtab.nochim, "/home/joe/Databases/silva_nr99_v138.1_train_set.fa.gz", multithread=FALSE)
+taxa <- assignTaxonomy(seqtab.nochim, "/home/joe/Databases/silva_nr99_v138.1_train_set.fa.gz", multithread=TRUE)
 
 taxa <- addSpecies(taxa, "/home/joe/Databases/silva_species_assignment_v138.1.fa.gz")
 
