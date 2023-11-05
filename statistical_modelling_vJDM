@@ -1,1 +1,49 @@
 ###code for mixed models in R
+library(lme4)
+library(emmeans)
+
+xenopus <- read.csv("experiment_data_R_finalNA.csv")
+xenopus$Treatment <- as.factor(xenopus$Treatment)
+xenopus$Date <- as.factor(xenopus$Date)
+xenopus$TreatmentDate <- interaction(xenopus$Treatment, xenopus$Date)
+
+modelsimp <- lmer(InvSimpMean ~ TreatmentDate+(1|Frog.Number), data=xenopus)
+modelmass <- lmer(Mass ~ TreatmentDate+(1|Frog.Number), data=xenopus)
+modelbd <- lmer(Bd ~ TreatmentDate+(1|Frog.Number), data=xenopus)
+
+### estimated marginal means comparisons of above models
+simp.emm <- emmeans(modelsimp, list(pairwise~TreatmentDate), adjust = "tukey")
+mass.emm <- emmeans(modelmass, list(pairwise~TreatmentDate), adjust = "tukey")
+bd.emm <- emmeans(modelbd, list(pairwise~TreatmentDate), adjust = "tukey")
+
+### plots
+p <- ggplot(data=xenopus, aes(x=Date, y=Bd))+
++ geom_bar(stat="identity", fill="gray")+
++ facet_grid(rows=Treatment~.)+
++ theme_bw()
+p
+p + scale_x_discrete(limits=c("1", "8", "22"))
+
+p <- ggplot(xenopus, aes(x=Date, y=InvSimpMean))+geom_point(size=1, alpha=1)+
++ facet_grid(rows=Treatment~.) +
++ theme_bw()
+p + labs(x="Day", y="Mass (g)") + theme_bw()
+
+p <- ggplot(xenopus, aes(x=Date, y=Mass))+geom_point(size=1, alpha=1)+
++ facet_grid(rows=Treatment~.) +
++ scale_x_continuous(breaks = seq(1, 29, 7), limits=c(0, 29),
++ theme_bw())
+p
+p + labs(x="Day", y="Mass (g)") + theme_bw()
+
+ ### Probiotic Abundances (by ASV abundance) ###
+library(lme4)
+library(emmeans)
+xenopus <- read.csv("probiotic_abundances.csv")
+xenopus$Treatment <- as.factor(xenopus$Treatment)
+xenopus$Time <- as.factor(xenopus$Time)
+xenopus$TreatmentTIme <- interaction(xenopus$Treatment, xenopus$Time)
+xenopus$TreatmentTime <- interaction(xenopus$Treatment, xenopus$Time)
+modelprobiotic <- lmer(probiotic ~ TreatmentTime+(1|Frog), data=xenopus)
+probiotic.emm <- emmeans(modelprobiotic, list(pairwise~TreatmentTime), adjust = "tukey")
+probiotic.emm
