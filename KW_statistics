@@ -1,0 +1,14 @@
+library(readx1)
+library(dplyr)
+setwd("/home/joe/Documents/Smithsonian/XenopusProbioticProject/Grayfer_Lab_Immunity_qPCR")
+getwd()
+my_data <- read_excel("xeno_qpcr.xlsx")
+my_data
+
+my_data$Treatment <- as.factor(my_data$Treatment)
+my_data$Gene <- as.factor(my_data$Gene)
+my_data$TreatmentGene <- interaction(my_data$Treatment, my_data$Gene)
+kruskal.test(TreatmentGene ~ NormalizedValue, data = my_data)
+
+###data:  TreatmentGene by NormalizedValue
+###Kruskal-Wallis chi-squared = 631.79, df = 611, p-value = 0.2719
