@@ -1,0 +1,67 @@
+library(readx1)
+library(dplyr)
+library(car)
+setwd("/home/joe/Documents/Smithsonian/XenopusProbioticProject/Grayfer_Lab_Immunity_qPCR")
+getwd()
+my_data <- read_excel("xeno_qpcr.xlsx")
+my_data
+
+my_data$Treatment <- as.factor(my_data$Treatment)
+my_data$Gene <- as.factor(my_data$Gene)
+my_data$TreatmentGene <- interaction(my_data$Treatment, my_data$Gene)
+
+res_aov <- aov(NormalizedValue ~ TreatmentGene,
+  data = my_data
+)
+
+hist(res_aov$residuals)
+par(mfrow = c(1, 2))
+
+qqPlot(res_aov$residuals,
+  id = FALSE
++ )
+
+leveneTest(NormalizedValue ~ TreatmentGene,
+  data = my_data
+)
+
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value    Pr(>F)    
+group  39  4.8596 < 2.2e-16 ***
+      616
+
+boxplot(NormalizedValue ~ TreatmentGene,
+  data = my_data
+)
+
+summary(res_aov)
+
+               Df    Sum Sq Mean Sq F value Pr(>F)    
+TreatmentGene  39 105540758 2706173   5.817 <2e-16 ***
+Residuals     616 286594099  465250                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+oneway.test(NormalizedValue ~ TreatmentGene,
+  data = my_data,
+  var.equal = TRUE 
++ )
+
+	One-way analysis of means
+
+data:  NormalizedValue and TreatmentGene
+F = 5.8166, num df = 39, denom df = 616, p-value < 2.2e-16
+
+oneway.test(NormalizedValue ~ TreatmentGene,
+  data = my_data,
+  var.equal = FALSE) 
+
+	One-way analysis of means (not assuming equal variances)
+
+data:  NormalizedValue and TreatmentGene
+F = 8.0607, num df = 39.00, denom df = 203.15, p-value < 2.2e-16
+
+kruskal.test(TreatmentGene ~ NormalizedValue, data = my_data)
+
+###data:  TreatmentGene by NormalizedValue
+###Kruskal-Wallis chi-squared = 631.79, df = 611, p-value = 0.2719
