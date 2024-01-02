@@ -61,6 +61,19 @@ oneway.test(NormalizedValue ~ TreatmentGene,
 data:  NormalizedValue and TreatmentGene
 F = 8.0607, num df = 39.00, denom df = 203.15, p-value < 2.2e-16
 
+model <- aov(NormalizedValue ~ TreatmentGene, data=my_data)
+
+> summary(model)
+               Df    Sum Sq Mean Sq F value Pr(>F)    
+TreatmentGene  39 105540758 2706173   5.817 <2e-16 ***
+Residuals     616 286594099  465250                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+> TukeyHSD(model, conf.level=.95) 
+###results in manuscript file
+
+
 kruskal.test(TreatmentGene ~ NormalizedValue, data = my_data)
 
 ###data:  TreatmentGene by NormalizedValue
