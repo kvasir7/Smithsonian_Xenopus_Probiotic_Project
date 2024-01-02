@@ -65,3 +65,5 @@ kruskal.test(TreatmentGene ~ NormalizedValue, data = my_data)
 
 ###data:  TreatmentGene by NormalizedValue
 ###Kruskal-Wallis chi-squared = 631.79, df = 611, p-value = 0.2719
+
+###from https://statsandr.com/blog/anova-in-r/#normality
